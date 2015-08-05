@@ -6,24 +6,17 @@ var Adjective = require('./lib/adjective.js');
 var Verb = require('./lib/verb.js');
 var Noun = require('./lib/noun.js');
 var getRandomWord = require('./lib/getRandomWord.js');
-//var getRandomWord2 = require('./lib/getRandomWord2.js');
-//var getRandomWord3 = require('./lib/getRandomWord3.js');
 var postRandomWord = require('./lib/postRandomWord.js');
-//var postRandomWord2 = require('./lib/postRandomWord2.js');
-//var postRandomWord3 = require('./lib/postRandomWord3.js');
 var app = express();
 var port = process.env.PORT || 3000;
+
+var adjective = new Adjective();
+var verb = new Verb();
+var noun = new Noun();
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended: true}));
 app.use(express.static(__dirname + '/app/'));
-
-//make an instance of that adjective object
-var adjective = new Adjective();
-
-var verb = new Verb();
-
-var noun = new Noun();
 
 app.get('/', function (req, res) {
   res.sendFile('index.html');
